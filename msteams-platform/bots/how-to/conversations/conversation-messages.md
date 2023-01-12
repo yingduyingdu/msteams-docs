@@ -8,7 +8,7 @@ ms.localizationpriority: medium
 
 # Messages in bot conversations
 
-Each message in a conversation is an `Activity` object of type `messageType: message`. When a user sends a message, Microsoft Teams posts the message to your bot. Teams sends a JSON object to your bot's messaging endpoint and Teams allows only one endpoint for messaging. Your bot examines the message to determine its type and responds accordingly.
+Each message in a conversation is an `Activity` object of type `messageType: message`. When a user sends a message, Microsoft Teams posts the message activity to your bot. Teams sends a JSON object to your bot's messaging endpoint and Teams allows only one endpoint for messaging. Your bot examines the message to determine its type and responds accordingly.
 
 Basic conversations are handled through the Bot Framework connector, a single REST API. This API enables your bot to communicate with Teams and other channels. The Bot Builder SDK provides the following features:
 
@@ -24,7 +24,7 @@ For more information, see [user attribution for bot messages](/microsoftteams/pl
 
 To receive a text message, use the `Text` property of an `Activity` object. In the bot's activity handler, use the turn context object's `Activity` to read a single message request.
 
-The following code shows an example of receiving a message:
+The following code shows an example of receiving a message activity:
 
 # [C#](#tab/dotnet1)
 
@@ -229,8 +229,8 @@ When you edit or undelete a message in a chat, the bot gets a notification of th
 
 To get an edit or undelete message event notification in a bot, you can override the following handlers:
 
-* For edit: `OnTeamsMessageEditAsync` or `OnMessageUpdateActivityAsync`
-* For undelete: `OnTeamsMessageUndeleteAsync` or `OnMessageUpdateActivityAsync`
+* For edit: `OnTeamsMessageEditAsync` 
+* For undelete: `OnTeamsMessageUndeleteAsync` 
 
 The following is an example of an edit message event notification when a sent message is edited:
 
@@ -430,9 +430,9 @@ async onTeamsMessageUndelete(context) {
 
 When you soft delete a message in a chat, the bot gets a notification of the soft delete message event.
 
-To get a soft delete message event notification in a bot, you can override the `OnMessageDeleteActivityAsync` handler.
+To get a soft delete message event notification in a bot, you can override the `OnTeamsMessageSoftDeleteAsync` handler.
 
-The following is an example of a soft delete message event notification when a message is deleted:
+The following is an example of a soft delete message event notification when a message is soft deleted:
 
 # [C#](#tab/csharp5)
 
